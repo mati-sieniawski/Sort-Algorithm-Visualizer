@@ -1,13 +1,21 @@
 {
   "version": "0.2.0",
   "configurations": [
-    
     {
       "type": "java",
-      "name": "Launch JavaFX",
+      "name": "Main",
       "request": "launch",
       "mainClass": "Main",
-      "vmArgs": "--module-path \"C:/Users/Admin/OneDrive/Dokumenty/javafx-sdk-24/lib\" --add-modules javafx.controls"
+      "projectName": "Sort-Algorithm-Visualizer_8c965914",
+       "vmArgs": "--module-path libs/javafx-sdk/lib --add-modules javafx.controls,javafx.fxml"
+    },
+    {
+      "type": "java",
+      "name": "Run JavaFX",
+      "request": "launch",
+      "mainClass": "Main",
+      "projectName": "TwojaNazwaProjektu",
+      "vmArgs": "--module-path libs/javafx-sdk/lib --add-modules javafx.controls,javafx.fxml"
     }
   ]
 }

@@ -1,12 +1,26 @@
+// {
+//   "java.project.referencedLibraries": [
+//     "C:/Users/Admin/OneDrive/Dokumenty/javafx-sdk-24/lib/*.jar"
+//   ],
+//   "java.configuration.runtimes": [
+//     {
+//       "name": "JavaSE-22",
+//       "path": "C:/Program Files/Eclipse Adoptium/jdk-22.0.2.9-hotspot",
+//       "default": true
+//     }
+//   ]
+// }
 {
   "java.project.referencedLibraries": [
-    "C:/Users/Admin/OneDrive/Dokumenty/javafx-sdk-24/lib/*.jar"
+    "libs/javafx-sdk/lib/*.jar"
   ],
+
   "java.configuration.runtimes": [
-    {
-      "name": "JavaSE-22",
-      "path": "C:/Program Files/Eclipse Adoptium/jdk-22.0.2.9-hotspot",
-      "default": true
-    }
-  ]
+  {
+    "name": "JavaSE-22",
+    "path": "C:/Program Files/Eclipse Adoptium/jdk-22.0.2.9-hotspot",
+    "default": true
+  }
+]
+
 }
