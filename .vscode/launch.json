@@ -7,6 +7,7 @@
       "request": "launch",
       "mainClass": "Main",
       // "projectName": "Sort-Algorithm-Visualizer_10d18a7a"
+      "vmArgs": "--module-path libs/javafx-sdk/lib --add-modules javafx.controls,javafx.fxml"
     },
     {
       "type": "java",
