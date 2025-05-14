@@ -6,15 +6,22 @@
       "name": "Main",
       "request": "launch",
       "mainClass": "Main",
-      "projectName": "Sort-Algorithm-Visualizer_8c965914",
-       "vmArgs": "--module-path libs/javafx-sdk/lib --add-modules javafx.controls,javafx.fxml"
+      // "projectName": "Sort-Algorithm-Visualizer_10d18a7a"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "Main",
+      // "projectName": "Sort-Algorithm-Visualizer_8c965914",
+      "vmArgs": "--module-path libs/javafx-sdk/lib --add-modules javafx.controls,javafx.fxml"
     },
     {
       "type": "java",
       "name": "Run JavaFX",
       "request": "launch",
       "mainClass": "Main",
-      "projectName": "TwojaNazwaProjektu",
+      // "projectName": "TwojaNazwaProjektu",
       "vmArgs": "--module-path libs/javafx-sdk/lib --add-modules javafx.controls,javafx.fxml"
     }
   ]

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+  <classpathentry kind="src" path="src"/>
+  <classpathentry kind="lib" path="libs/javafx-sdk/lib/javafx.base.jar"/>
+  <classpathentry kind="lib" path="libs/javafx-sdk/lib/javafx.controls.jar"/>
+  <classpathentry kind="lib" path="libs/javafx-sdk/lib/javafx.fxml.jar"/>
+  <classpathentry kind="lib" path="libs/javafx-sdk/lib/javafx.graphics.jar"/>
+  <classpathentry kind="lib" path="libs/javafx-sdk/lib/javafx.media.jar"/>
+  <classpathentry kind="lib" path="libs/javafx-sdk/lib/javafx.swing.jar"/>
+  <classpathentry kind="lib" path="libs/javafx-sdk/lib/javafx.web.jar"/>
+  <classpathentry kind="output" path="bin"/>
+</classpath>
