@@ -2,116 +2,39 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.scene.control.Label;
+
 
 public class Main extends Application {
 
-    private Stage primaryStage;
-    public static ObservableList<Integer> sharedValues = FXCollections.observableArrayList(
-        200, 70, 50, 90, 20, 40
-    );
+    public static ObservableList<Integer> sharedValues = ArrayCreator.generateValues(10, 30);
+//            FXCollections.observableArrayList(
+//        200, 70, 50, 90, 20, 40,120, 150, 55, 210,30, 100
+//    );
 
     @Override
     public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-        showMainMenu();
-    }
-
-    private void showMainMenu() {
-        Button bubbleSortButton = new Button("Bubble Sort");
-
-        bubbleSortButton.setOnAction(e -> showConfigScreen("Bubble Sort"));
-
-        VBox layout = new VBox(15, new Label("Wybierz algorytm sortowania:"), bubbleSortButton);
-        layout.setStyle("-fx-padding: 20px; -fx-alignment: center;");
-
-        primaryStage.setScene(new Scene(layout, 400, 300));
-        primaryStage.setTitle("Menu Główne");
+        BarChartVisualizer visualizer = new BarChartVisualizer(sharedValues);
+        VBox layout = new VBox(visualizer);
+        Scene scene = new Scene(layout, 800, 600);
+        int baseDelay = 500; // milliseconds
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Zmiana wartości na żywo");
         primaryStage.show();
+
+        new Thread(() -> {
+            try {
+                Thread.sleep(2000);
+                BubbleSort bubbleSort = new BubbleSort(sharedValues, baseDelay,
+                        new Label("label"), visualizer, new Label("finish label"));
+                bubbleSort.startSorting();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
-
-    private void showConfigScreen(String algorithmName) {
-        Label info = new Label("Zakres sortowania (indeksy):");
-
-        TextField fromField = new TextField("0");
-        TextField toField = new TextField(String.valueOf(sharedValues.size() - 1));
-
-        Button startButton = new Button("Wizualizuj");
-        Button backButton = new Button("Powrót");
-
-        HBox rangeInputs = new HBox(10, new Label("Od:"), fromField, new Label("Do:"), toField);
-        rangeInputs.setStyle("-fx-alignment: center;");
-
-        startButton.setOnAction(e -> {
-            int from = Integer.parseInt(fromField.getText());
-            int to = Integer.parseInt(toField.getText());
-            showVisualizationScreen(algorithmName, from, to);
-        });
-
-        backButton.setOnAction(e -> showMainMenu());
-
-        VBox layout = new VBox(15, info, rangeInputs, startButton, backButton);
-        layout.setStyle("-fx-padding: 20px; -fx-alignment: center;");
-
-        primaryStage.setScene(new Scene(layout, 400, 300));
-    }
-
-    private void showVisualizationScreen(String algorithmName, int from, int to) {
-    // Losowe wartości
-    for (int i = from; i <= to; i++) {
-        int randomValue = (int) (Math.random() * 400);
-        if (i < sharedValues.size()) {
-            sharedValues.set(i, randomValue);
-        } else {
-            sharedValues.add(randomValue);
-        }
-    }
-    while (sharedValues.size() > to + 1) {
-        sharedValues.remove(sharedValues.size() - 1);
-    }
-
-    // UI elementy
-    Label stepCounterLabel = new Label("Kroki: 0");
-    Label speedLabel = new Label("x1.0");
-
-    Button slowerButton = new Button("←");
-    Button fasterButton = new Button("→");
-
-    HBox speedControls = new HBox(5, slowerButton, speedLabel, fasterButton);
-    speedControls.setStyle("-fx-alignment: center-right;");
-
-    BorderPane topPane = new BorderPane();
-    topPane.setLeft(stepCounterLabel);
-    topPane.setRight(speedControls);
-    BorderPane.setMargin(stepCounterLabel, new javafx.geometry.Insets(10));
-    BorderPane.setMargin(speedControls, new javafx.geometry.Insets(10));
-
-    BarChartVisualizer visualizer = new BarChartVisualizer(sharedValues);
-    Button backButton = new Button("Powrót do menu");
-    backButton.setOnAction(e -> showMainMenu());
-
-    BorderPane root = new BorderPane();
-    root.setTop(topPane);
-    root.setCenter(visualizer);
-    root.setBottom(backButton);
-    BorderPane.setMargin(backButton, new javafx.geometry.Insets(10));
-
-    primaryStage.setScene(new Scene(root, 800, 600));
-
-    if (algorithmName.equals("Bubble Sort")) {
-        BubbleSort sorter = new BubbleSort(sharedValues, 300, from, to, stepCounterLabel);
-        sorter.setSpeedLabel(speedLabel);
-
-        slowerButton.setOnAction(e -> sorter.decreaseSpeed());
-        fasterButton.setOnAction(e -> sorter.increaseSpeed());
-
-        new Thread(sorter::startSorting).start();
-    }
-}
-
-
 
     public static void main(String[] args) {
         launch(args);
