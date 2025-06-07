@@ -13,7 +13,8 @@ public class BubbleSort extends SortingAlgorithm {
         new Thread(() -> {
             for (int i = 0; i < listSize; i++) {
                 for (int j = 0; j < listSize - i - 1; j++) {
-                    highlight(j, j + 1);
+                    highlightCompare(j, -1);
+                    highlightCursor(j+1);
                     if (list.get(j) > list.get(j + 1)) {
                         sleep(); // pauza przed zamiana wartosci
                         swap(j, j + 1);

@@ -64,9 +64,17 @@ public class SortingAlgorithm {
         list.set(j, temp);
     }
 
+    protected void set(int i, int value){
+        list.set(i, value);
+    }
+
     // indeks wskaznika, indeks do porownania
-    protected void highlight(int i, int j) {
-        visualizer.highlightBars(i, j);
+    protected void highlightCursor(int i) {
+        visualizer.visCursor(i);
+    }
+
+    protected void highlightCompare(int i, int j) {
+        visualizer.visCompare(i, j);
     }
 
     protected void updateStepCounter() {
