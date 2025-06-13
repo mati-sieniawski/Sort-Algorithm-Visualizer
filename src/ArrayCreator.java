@@ -4,8 +4,16 @@ import java.util.Random;
 import java.util.Collections;
 
 public class ArrayCreator {
-    public static ObservableList<Integer> generateValues(int size, int baseValue){
-        ObservableList<Integer> list = FXCollections.observableArrayList(Collections.nCopies(size, 0)); //wypelnienie 0
+    private static ObservableList<Integer> list = FXCollections.observableArrayList(); //wypelnienie 0
+    public static ObservableList<Integer> generateValues(int size, int baseValue, int mode){
+        list = FXCollections.observableArrayList(Collections.nCopies(size, 0));
+        if (mode == 0) { fillRandom(size, baseValue); }
+        else if (mode == 1) {fillSorted(size, baseValue); }
+        else if (mode == 2) {fillSortedReverse(size, baseValue); }
+        return list;
+    }
+
+    private static void fillRandom(int size, int baseValue){
         int i = 1, id;
         Random gen = new Random();
         // wybieranie pozycji do ustawienia kolejnej wartosci w kolejnosci
@@ -17,7 +25,18 @@ public class ArrayCreator {
                 i++;
             }
         }
-    return list;
+    }
+
+    private static void fillSorted(int size, int baseValue){
+        for (int i = 0; i < size; i++){
+            list.set(i , (i+1)*baseValue);
+        }
+    }
+
+    private static void fillSortedReverse(int size, int baseValue){
+        for (int i = 0; i < size; i++){
+            list.set(i, baseValue*(size - i));
+        }
     }
 
 }

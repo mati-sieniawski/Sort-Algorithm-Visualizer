@@ -29,10 +29,9 @@ public class InsertionSort extends SortingAlgorithm {
                 set(j + 1, key);
                 highlightCompare(j + 1, i);
                 sleep();
-                visualizer.addSorted(i);
+                highlightSorted(i);
             }
-            visualizer.clearHighlights();
-
+            highlightClear();
         }).start();
     }
 }

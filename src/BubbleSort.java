@@ -22,9 +22,9 @@ public class BubbleSort extends SortingAlgorithm {
                     stepCounter++;
                     updateStepCounter();
                     sleep();
-                    visualizer.clearHighlights();
+                    highlightClear();
                 }
-                visualizer.addSorted(listSize - i - 1);
+                highlightSorted(listSize - i - 1);
             }
             Platform.runLater(() -> finishedLabel.setText("Sortowanie zakończone!"));
         }).start();

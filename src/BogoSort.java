@@ -21,7 +21,7 @@ public class BogoSort extends SortingAlgorithm {
                 sleep();
             }
             for (int i = 0; i < listSize; i++){
-                visualizer.addSorted(i);
+                highlightSorted(i);
             }
             sleep();
             list.set(0, list.getFirst()); //update listy dla listenera - wywolanie updatebars

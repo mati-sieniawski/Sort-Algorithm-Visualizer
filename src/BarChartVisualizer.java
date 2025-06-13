@@ -59,9 +59,9 @@ public class BarChartVisualizer extends Pane {
 
     private Color getColor(int i){
         if (i == highlightA) { return Color.RED; }
-        if (i == highlightB) { return Color.ORANGE; };
-        if (i == highlightC) { return Color.DARKORANGE; };
-        if (sortedIds.contains(i)) { return Color.LIMEGREEN; };
+        if (i == highlightB) { return Color.ORANGE; }
+        if (i == highlightC) { return Color.TOMATO; }
+        if (sortedIds.contains(i)) { return Color.LIMEGREEN; }
         return Color.CORNFLOWERBLUE;
     }
 
@@ -73,7 +73,7 @@ public class BarChartVisualizer extends Pane {
         double barWidth = Math.max(1, width / numBars);
         double maxValue = values.stream().max(Integer::compareTo).orElse(1);
 
-// Synchronizacja liczby prostokątów z liczbą wartości
+        // Synchronizacja liczby prostokątów z liczbą wartości
         while (rectangles.size() < numBars) {
             Rectangle rect = new Rectangle();
             rectangles.add(rect);

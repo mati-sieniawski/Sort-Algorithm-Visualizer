@@ -64,6 +64,15 @@ public class SortingAlgorithm {
         list.set(j, temp);
     }
 
+    protected int powerInt(int value, int exponent){
+        if (exponent == 0) { return 1; }
+        int out = value;
+        for (int i = 1; i < exponent; i++){
+            out *= value;
+        }
+        return out;
+    }
+
     protected void set(int i, int value){
         list.set(i, value);
     }
@@ -76,6 +85,10 @@ public class SortingAlgorithm {
     protected void highlightCompare(int i, int j) {
         visualizer.visCompare(i, j);
     }
+
+    protected void highlightClear() { visualizer.clearHighlights(); }
+
+    protected void highlightSorted(int i) { visualizer.addSorted(i); }
 
     protected void updateStepCounter() {
         Platform.runLater(() -> stepLabel.setText("Kroki: " + stepCounter));

@@ -13,9 +13,9 @@ public class SelectionSort extends SortingAlgorithm{
         new Thread(() -> {
             for (int i = 0; i < listSize - 1; i++) {
                 int minIndex = i;
-                visualizer.visCursor(i);
+                highlightCursor(i);
                 for (int j = i + 1; j < listSize; j++) {
-                    visualizer.visCompare(j, minIndex);
+                    highlightCompare(j, minIndex);
                     sleep();
                     if (list.get(j) < list.get(minIndex)) {
                         minIndex = j;
@@ -24,11 +24,11 @@ public class SelectionSort extends SortingAlgorithm{
                 if (minIndex != i) {
                     swap(i, minIndex);
                     sleep();
-                };
-                visualizer.clearHighlights();
-                visualizer.addSorted(i);
+                }
+                highlightClear();
+                highlightSorted(i);
             }
-            visualizer.addSorted(listSize - 1);
+            highlightSorted(listSize - 1);
         }).start();
     }
 }
