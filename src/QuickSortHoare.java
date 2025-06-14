@@ -1,6 +1,6 @@
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
-import javafx.scene.control.Label;
+
 
 public class QuickSortHoare extends SortingAlgorithm {
 

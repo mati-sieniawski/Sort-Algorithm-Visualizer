@@ -1,4 +1,3 @@
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 

@@ -3,7 +3,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
-import org.w3c.dom.css.Rect;
+
 
 import java.util.ArrayList;
 import java.util.Comparator;

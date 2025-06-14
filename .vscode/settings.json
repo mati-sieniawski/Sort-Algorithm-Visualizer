@@ -21,6 +21,7 @@
     "path": "C:/Program Files/Eclipse Adoptium/jdk-22.0.2.9-hotspot",
     "default": true
   }
-]
+],
+"java.debug.settings.onBuildFailureProceed": true
 
 }
