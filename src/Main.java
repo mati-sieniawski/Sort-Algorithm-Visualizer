@@ -16,7 +16,7 @@ public class Main extends Application {
         BarChartVisualizer visualizer = new BarChartVisualizer(sharedValues);
         VBox layout = new VBox(visualizer);
         Scene scene = new Scene(layout, 800, 600);
-        int baseDelay = 10; // milliseconds
+        int baseDelay = 5; // milliseconds
         primaryStage.setScene(scene);
         primaryStage.setTitle("Zmiana wartości na żywo");
         primaryStage.show();
@@ -40,10 +40,16 @@ public class Main extends Application {
 //                QuickSortHoare sort = new QuickSortHoare(sharedValues, baseDelay,
 //                        new Label("label"), visualizer, new Label("finish label"));
                 //qsort lomuto
-                QuickSortLomuto sort = new QuickSortLomuto(sharedValues, baseDelay,
-                        new Label("label"), visualizer, new Label("finish label"));
+//                QuickSortLomuto sort = new QuickSortLomuto(sharedValues, baseDelay,
+//                        new Label("label"), visualizer, new Label("finish label"));
                 //shell
 //                ShellSort sort = new ShellSort(sharedValues, baseDelay,
+//                        new Label("label"), visualizer, new Label("finish label"));
+                //heap
+                HeapSort sort = new HeapSort(sharedValues, baseDelay,
+                        new Label("label"), visualizer, new Label("finish label"));
+                //merge
+//                MergeSort sort = new MergeSort(sharedValues, baseDelay,
 //                        new Label("label"), visualizer, new Label("finish label"));
 
                 //start sorting

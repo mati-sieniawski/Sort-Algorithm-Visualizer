@@ -86,6 +86,14 @@ public class SortingAlgorithm {
         visualizer.visCompare(i, j);
     }
 
+    protected void highlightCompareLeft(int i) {
+        visualizer.visCompareLeft(i);
+    }
+
+    protected void highlightCompareRigth(int i) {
+        visualizer.visCompareRight(i);
+    }
+
     protected void highlightClear() { visualizer.clearHighlights(); }
 
     protected void highlightSorted(int i) { visualizer.addSorted(i); }

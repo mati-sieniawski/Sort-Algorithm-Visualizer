@@ -35,6 +35,16 @@ public class BarChartVisualizer extends Pane {
         Platform.runLater(this::updateBars);
     }
 
+    public void visCompareLeft(int b) {
+        this.highlightB = b;
+        Platform.runLater(this::updateBars);
+    }
+
+    public void visCompareRight(int c) {
+        this.highlightC = c;
+        Platform.runLater(this::updateBars);
+    }
+
     public void clearHighlights() {
         this.highlightA = -1;
         this.highlightB = -1;
