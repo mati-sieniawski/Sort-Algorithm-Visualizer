@@ -1,6 +1,6 @@
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -26,7 +26,9 @@ public class ShellSort extends SortingAlgorithm {
                     indexes.clear();
                 }
             }
+            Platform.runLater(() -> finishedLabel.setText("✅Algorytm ShellSort zakończył działanie."));
         }).start();
+        
     }
 
     private void generateSpacing(){
@@ -43,7 +45,9 @@ public class ShellSort extends SortingAlgorithm {
     private void simpleInsertionSort(int check) {
         for (int i = 1; i < indexes.size(); i++){
             highlightCursor(indexes.get(i));
-            if (check == 1) { highlightSorted(0); }
+            incrementCounterGet();
+            incrementCounterIf();
+            if (check == 1) { highlightSorted(0);}
             int j = i - 1;
             highlightCompare(indexes.get(j), -1);
             int tempValue = list.get(indexes.get(i));
@@ -53,6 +57,8 @@ public class ShellSort extends SortingAlgorithm {
                 sleep();
                 set(indexes.get(j + 1), list.get(indexes.get(j)));
                 j--;
+                incrementCounterGet();
+                incrementCounterIf();
             }
             sleep();
             set(indexes.get(j + 1), tempValue);
@@ -61,9 +67,4 @@ public class ShellSort extends SortingAlgorithm {
             if (check == 1) { highlightSorted(i); }
         }
     }
-
-
-
-
-
 }

@@ -16,17 +16,17 @@ public class BubbleSort extends SortingAlgorithm {
                     highlightCompare(j, -1);
                     highlightCursor(j+1);
                     if (list.get(j) > list.get(j + 1)) {
-                        sleep(); // pauza przed zamiana wartosci
+                        incrementCounterIf();
+                        incrementCounterGet();incrementCounterGet();
+                        sleep();
                         swap(j, j + 1);
                     }
-                    stepCounter++;
-                    updateStepCounter();
                     sleep();
                     highlightClear();
                 }
                 highlightSorted(listSize - i - 1);
             }
-            Platform.runLater(() -> finishedLabel.setText("Sortowanie zakończone!"));
+             Platform.runLater(() -> finishedLabel.setText("✅Algorytm ShellSort zakończył działanie."));
         }).start();
     }
 

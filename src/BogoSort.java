@@ -24,13 +24,16 @@ public class BogoSort extends SortingAlgorithm {
                 highlightSorted(i);
             }
             sleep();
-            list.set(0, list.getFirst()); //update listy dla listenera - wywolanie updatebars
+            list.set(0, list.getFirst());
+            Platform.runLater(() -> finishedLabel.setText("✅Algorytm ShellSort zakończył działanie."));
         }).start();
     }
 
     private boolean isSorted() {
         for (int i = 0; i < list.size() - 1; i++) {
             if (list.get(i) > list.get(i + 1)) {
+                incrementCounterIf();
+                incrementCounterGet();incrementCounterGet();
                 return false;
             }
         }

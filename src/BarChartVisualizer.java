@@ -3,10 +3,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
-
-
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class BarChartVisualizer extends Pane {
 
@@ -21,7 +18,6 @@ public class BarChartVisualizer extends Pane {
 
     public void addSorted(int id){
         sortedIds.add(id);
-//        sortedIds.sort(Comparator.naturalOrder()); // sortowanie posortowanych indeksow
     }
 
     public void delSorted(int id){
@@ -82,13 +78,11 @@ public class BarChartVisualizer extends Pane {
 
     private void updateBars() {
         int numBars = values.size();
-
         double width = getWidth() > 0 ? getWidth() : 800;
         double height = getHeight() > 0 ? getHeight() : 600;
         double barWidth = Math.max(1, width / numBars);
         double maxValue = values.stream().max(Integer::compareTo).orElse(1);
 
-        // Synchronizacja liczby prostokątów z liczbą wartości
         while (rectangles.size() < numBars) {
             Rectangle rect = new Rectangle();
             rectangles.add(rect);
@@ -98,7 +92,6 @@ public class BarChartVisualizer extends Pane {
         for (int i = 0; i < numBars; i++) {
             double value = values.get(i);
             double barHeight = value / (double) maxValue * height;
-
             Rectangle rect = rectangles.get(i);
             rect.setWidth(barWidth);
             rect.setHeight(barHeight);

@@ -13,13 +13,14 @@ public class SortingAlgorithm {
     protected final BarChartVisualizer visualizer;
     protected final Label finishedLabel;
     protected Label speedLabel;
-    protected Thread sortingThread;  // Zmienna do trzymania wątku sortowania
-    protected volatile boolean isSorting = true;  // Zmienna do kontrolowania stanu sortowania
+    //protected Thread sortingThread;  
+    //protected volatile boolean isSorting = true;  
+    protected int counterIf = 0;   
+    protected int counterGet = 0;
 
-    protected final double[] speedSteps = {0.25, 0.5, 1, 2, 4, 10, 25, 100, 500, 1000};
-    protected int currentSpeedIndex = 2; // x1
+    protected final double[] speedSteps = {0.01, 0.05, 0.1, 0.5, 1, 2, 4, 10};
+    protected int currentSpeedIndex = 2;
     public double speedMultiplier = speedSteps[currentSpeedIndex];
-    protected int stepCounter = 0;
 
     public SortingAlgorithm(ObservableList<Integer> list, int baseDelayMillis,
                       Label stepLabel, BarChartVisualizer visualizer, Label finishedLabel) {
@@ -77,7 +78,6 @@ public class SortingAlgorithm {
         list.set(i, value);
     }
 
-    // indeks wskaznika, indeks do porownania
     protected void highlightCursor(int i) {
         visualizer.visCursor(i);
     }
@@ -100,10 +100,6 @@ public class SortingAlgorithm {
 
     protected void highlightSortedDel(int i) { visualizer.delSorted(i); }
 
-    protected void updateStepCounter() {
-        Platform.runLater(() -> stepLabel.setText("Kroki: " + stepCounter));
-    }
-
     protected void sleep() {
         try {
             Thread.sleep((long) (baseDelayMillis / speedMultiplier));
@@ -111,4 +107,22 @@ public class SortingAlgorithm {
             e.printStackTrace();
         }
     }
+    protected void incrementCounterIf() {
+    counterIf++;
+    updateStepLabels();
+}
+
+protected void incrementCounterGet() {
+    counterGet++;
+    updateStepLabels();
+}
+
+private void updateStepLabels() {
+    if (stepLabel != null) {
+        Platform.runLater(() -> {
+            stepLabel.setText("Porównania: " + counterIf + "    Dostępy: " + counterGet);
+        });
+    }
+}
+
 }

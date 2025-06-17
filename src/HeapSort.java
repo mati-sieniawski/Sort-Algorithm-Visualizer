@@ -1,3 +1,4 @@
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 
@@ -24,8 +25,9 @@ public class HeapSort extends SortingAlgorithm {
                 sleep();
                 heapify(i, 0);
             }
-
+            highlightSorted(0);
             highlightClear();
+            Platform.runLater(() -> finishedLabel.setText("✅Algorytm ShellSort zakończył działanie."));
         }).start();
     }
 
@@ -36,20 +38,28 @@ public class HeapSort extends SortingAlgorithm {
 
         highlightCursor(rootIndex);
         if (left < heapSize) {
+            incrementCounterIf();
             highlightCompareLeft(left);
             if (list.get(left) > list.get(largest)) {
                 largest = left;
+                incrementCounterIf();
+                incrementCounterGet(); incrementCounterGet();
+
             }
         }
 
         if (right < heapSize) {
             highlightCompareRigth(right);
+            incrementCounterIf();
             if (list.get(right) > list.get(largest)) {
                 largest = right;
+                incrementCounterIf();
+                incrementCounterGet(); incrementCounterGet();
             }
         }
 
         if (largest != rootIndex) {
+            incrementCounterIf();
             sleep();
             swap(rootIndex, largest);
             sleep();
@@ -57,8 +67,4 @@ public class HeapSort extends SortingAlgorithm {
             heapify(heapSize, largest);
         }
     }
-
-
-
-
 }

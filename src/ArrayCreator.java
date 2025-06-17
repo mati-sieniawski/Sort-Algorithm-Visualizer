@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Collections;
 
 public class ArrayCreator {
-    private static ObservableList<Integer> list = FXCollections.observableArrayList(); //wypelnienie 0
+    private static ObservableList<Integer> list = FXCollections.observableArrayList();
     public static ObservableList<Integer> generateValues(int size, int baseValue, int mode){
         list = FXCollections.observableArrayList(Collections.nCopies(size, 0));
         if (mode == 0) { fillRandom(size, baseValue); }
@@ -16,8 +16,6 @@ public class ArrayCreator {
     private static void fillRandom(int size, int baseValue){
         int i = 1, id;
         Random gen = new Random();
-        // wybieranie pozycji do ustawienia kolejnej wartosci w kolejnosci
-        // jezeli pole niepuste szuka nastepnego
         while(i - 1 < size){
             id = gen.nextInt(size);
             if(list.get(id) == 0){
