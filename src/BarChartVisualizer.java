@@ -19,9 +19,14 @@ public class BarChartVisualizer extends Pane {
     private final ArrayList<Integer> sortedIds = new ArrayList<Integer>();
     private final ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
 
-    public void addSorted(Integer id){
+    public void addSorted(int id){
         sortedIds.add(id);
-        sortedIds.sort(Comparator.naturalOrder()); // sortowanie posortowanych indeksow
+//        sortedIds.sort(Comparator.naturalOrder()); // sortowanie posortowanych indeksow
+    }
+
+    public void delSorted(int id){
+        sortedIds.remove(Integer.valueOf(id));
+
     }
 
     public void visCursor(int a){

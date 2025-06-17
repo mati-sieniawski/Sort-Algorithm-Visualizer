@@ -98,6 +98,8 @@ public class SortingAlgorithm {
 
     protected void highlightSorted(int i) { visualizer.addSorted(i); }
 
+    protected void highlightSortedDel(int i) { visualizer.delSorted(i); }
+
     protected void updateStepCounter() {
         Platform.runLater(() -> stepLabel.setText("Kroki: " + stepCounter));
     }

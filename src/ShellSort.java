@@ -43,6 +43,7 @@ public class ShellSort extends SortingAlgorithm {
     private void simpleInsertionSort(int check) {
         for (int i = 1; i < indexes.size(); i++){
             highlightCursor(indexes.get(i));
+            if (check == 1) { highlightSorted(0); }
             int j = i - 1;
             highlightCompare(indexes.get(j), -1);
             int tempValue = list.get(indexes.get(i));

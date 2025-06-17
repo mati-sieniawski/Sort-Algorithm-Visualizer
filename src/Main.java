@@ -4,23 +4,23 @@
 // import javafx.scene.layout.VBox;
 // import javafx.stage.Stage;
 // import javafx.scene.control.Label;
-
-
+//
+//
 // public class Main extends Application {
-
-//     public static ObservableList<Integer> sharedValues = ArrayCreator.generateValues(400, 10, 0);
-
-
+//
+//     public static ObservableList<Integer> sharedValues = ArrayCreator.generateValues(20, 10, 0);
+//
+//
 //     @Override
 //     public void start(Stage primaryStage) {
 //         BarChartVisualizer visualizer = new BarChartVisualizer(sharedValues);
 //         VBox layout = new VBox(visualizer);
 //         Scene scene = new Scene(layout, 800, 600);
-//         int baseDelay = 5; // milliseconds
+//         int baseDelay = 500; // milliseconds
 //         primaryStage.setScene(scene);
 //         primaryStage.setTitle("Zmiana wartości na żywo");
 //         primaryStage.show();
-
+//
 //         new Thread(() -> {
 //             try {
 //                 Thread.sleep(2000);
@@ -43,28 +43,29 @@
 // //                QuickSortLomuto sort = new QuickSortLomuto(sharedValues, baseDelay,
 // //                        new Label("label"), visualizer, new Label("finish label"));
 //                 //shell
-// //                ShellSort sort = new ShellSort(sharedValues, baseDelay,
-// //                        new Label("label"), visualizer, new Label("finish label"));
-//                 //heap
-//                 HeapSort sort = new HeapSort(sharedValues, baseDelay,
+//                 ShellSort sort = new ShellSort(sharedValues, baseDelay,
 //                         new Label("label"), visualizer, new Label("finish label"));
+//                 //heap
+////                 HeapSort sort = new HeapSort(sharedValues, baseDelay,
+////                         new Label("label"), visualizer, new Label("finish label"));
 //                 //merge
-// //                MergeSort sort = new MergeSort(sharedValues, baseDelay,
-// //                        new Label("label"), visualizer, new Label("finish label"));
-
+////                 MergeSort sort = new MergeSort(sharedValues, baseDelay,
+////                         new Label("label"), visualizer, new Label("finish label"));
+//
 //                 //start sorting
 //                 sort.startSorting();
-
+//
 //             } catch (InterruptedException e) {
 //                 e.printStackTrace();
 //             }
 //         }).start();
 //     }
-
+//
 //     public static void main(String[] args) {
 //         launch(args);
 //     }
 // }
+//===================================================================================
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -86,7 +87,7 @@ public class Main extends Application {
         ComboBox<String> algorithmComboBox = new ComboBox<>();
         algorithmComboBox.getItems().addAll(
                 "ShellSort", "HeapSort", "BubbleSort", "InsertionSort", "SelectionSort",
-                "QuickSortHoare", "QuickSortLomuto", "BogoSort"
+                "QuickSortHoare", "QuickSortLomuto", "BogoSort", "MergeSort"
         );
         algorithmComboBox.setValue("ShellSort");
 
@@ -105,10 +106,12 @@ public class Main extends Application {
     }
 
     private void showElementCountScreen(Stage stage, String selectedAlgorithm) {
-        Slider slider = new Slider(10, 1000, 100);
-        slider.setMajorTickUnit(100);
+        Slider slider = new Slider(0, 1000, 100);
+        slider.setMajorTickUnit(50);
+        slider.setMinorTickCount(4);
         slider.setShowTickLabels(true);
         slider.setShowTickMarks(true);
+        slider.setBlockIncrement(10);
 
         Button startButton = new Button("Start wizualizacji");
 
@@ -132,11 +135,11 @@ public class Main extends Application {
         BarChartVisualizer visualizer = new BarChartVisualizer(values);
         VBox layout = new VBox(10, backButton, visualizer);
         layout.setStyle("-fx-padding: 10;");
-        Scene scene = new Scene(layout, 800, 600);
+        Scene scene = new Scene(layout, count > 780 ? count + 20 : 800, 600);
         stage.setScene(scene);
         stage.setTitle("Wizualizacja: " + algorithm);
-       
-        
+
+
 
 
         new Thread(() -> {
@@ -172,12 +175,12 @@ public class Main extends Application {
                         QuickSortLomuto sort = new QuickSortLomuto(values, 5, new Label(), visualizer, new Label());
                         sort.startSorting();
                     }
-                    // case "MergeSort" -> {
-                    //     MergeSort sort = new MergeSort(values, 5, new Label(), visualizer, new Label());
-                    //     sort.startSorting();
-                    // }
+                     case "MergeSort" -> {
+                         MergeSort sort = new MergeSort(values, 5, new Label(), visualizer, new Label());
+                         sort.startSorting();
+                     }
                     case "BogoSort" -> {
-                        BogoSort sort = new BogoSort(values, 5, new Label(), visualizer, new Label());
+                        BogoSort sort = new BogoSort(values, 50, new Label(), visualizer, new Label());
                         sort.startSorting();
                     }
                     default -> {
