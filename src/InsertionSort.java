@@ -34,7 +34,7 @@ public class InsertionSort extends SortingAlgorithm {
                 highlightSorted(i);
             }
             highlightClear();
-            Platform.runLater(() -> finishedLabel.setText("✅Algorytm ShellSort zakończył działanie."));
+            Platform.runLater(() -> finishedLabel.setText("✅Algorytm InsertionSort zakończył działanie."));
         }).start();
     }
 }

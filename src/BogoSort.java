@@ -25,7 +25,7 @@ public class BogoSort extends SortingAlgorithm {
             }
             sleep();
             list.set(0, list.getFirst());
-            Platform.runLater(() -> finishedLabel.setText("✅Algorytm ShellSort zakończył działanie."));
+            Platform.runLater(() -> finishedLabel.setText("✅Algorytm BogoSort zakończył działanie."));
         }).start();
     }
 

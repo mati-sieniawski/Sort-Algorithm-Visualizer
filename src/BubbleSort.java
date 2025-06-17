@@ -26,7 +26,7 @@ public class BubbleSort extends SortingAlgorithm {
                 }
                 highlightSorted(listSize - i - 1);
             }
-             Platform.runLater(() -> finishedLabel.setText("✅Algorytm ShellSort zakończył działanie."));
+             Platform.runLater(() -> finishedLabel.setText("✅Algorytm BubbleSort zakończył działanie."));
         }).start();
     }
 

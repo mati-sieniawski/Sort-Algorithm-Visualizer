@@ -34,7 +34,7 @@ public class SelectionSort extends SortingAlgorithm{
                 highlightSorted(i);
             }
             highlightSorted(listSize - 1);
-             Platform.runLater(() -> finishedLabel.setText("✅Algorytm ShellSort zakończył działanie."));
+             Platform.runLater(() -> finishedLabel.setText("✅Algorytm SelectionSort zakończył działanie."));
         }).start();
     }
 }

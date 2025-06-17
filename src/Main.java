@@ -68,11 +68,13 @@
 //===================================================================================
 import javafx.application.Application;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.application.Platform;
@@ -95,7 +97,11 @@ public class Main extends Application {
         modeComboBox.getItems().addAll("Losowe", "Posortowane", "Odwrotnie posortowane");
         modeComboBox.setValue("Losowe");
         Button nextButton = new Button("Dalej");
-
+        Button exitButton = new Button("Zamknij");
+        exitButton.setOnAction(e -> {
+        Platform.exit();     // Zamyka JavaFX
+        System.exit(0);      // Zamyka JVM
+        });
         nextButton.setOnAction(e -> {
             String selectedAlgorithm = algorithmComboBox.getValue();
             int selectedMode = switch (modeComboBox.getValue()) {
@@ -106,10 +112,13 @@ public class Main extends Application {
         };
             showElementCountScreen(stage, selectedAlgorithm, selectedMode);
         });
+        
+        HBox buttonBox = new HBox(10, nextButton, exitButton);
+        buttonBox.setAlignment(Pos.CENTER); 
 
-        VBox layout = new VBox(20, 
-        new Label("Wybierz algorytm sortowania:"), algorithmComboBox, 
-        new Label("Wybierz tryb danych:"), modeComboBox, nextButton);
+        VBox layout = new VBox(20,
+        new Label("Wybierz algorytm sortowania:"), algorithmComboBox,
+        new Label("Wybierz tryb danych:"), modeComboBox,buttonBox );
         layout.setStyle("-fx-padding: 30; -fx-alignment: center;");
         stage.setScene(new Scene(layout, 400, 200));
         stage.setTitle("Wybór algorytmu");

@@ -27,7 +27,7 @@ public class HeapSort extends SortingAlgorithm {
             }
             highlightSorted(0);
             highlightClear();
-            Platform.runLater(() -> finishedLabel.setText("✅Algorytm ShellSort zakończył działanie."));
+            Platform.runLater(() -> finishedLabel.setText("✅Algorytm HeapSort zakończył działanie."));
         }).start();
     }
 

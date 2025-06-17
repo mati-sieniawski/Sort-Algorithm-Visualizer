@@ -12,7 +12,7 @@ public class QuickSortLomuto extends SortingAlgorithm {
     public void startSorting() {
         new Thread(() -> {
             qsort(0, listSize-1);
-             Platform.runLater(() -> finishedLabel.setText("✅Algorytm ShellSort zakończył działanie."));
+             Platform.runLater(() -> finishedLabel.setText("✅Algorytm GuickSortLomuto zakończył działanie."));
         }).start();
     }
 

@@ -20,7 +20,7 @@ public class MergeSort extends SortingAlgorithm {
 
             mergeSort(0, listSize - 1);
             highlightClear();
-            Platform.runLater(() -> finishedLabel.setText("✅Algorytm ShellSort zakończył działanie."));
+            Platform.runLater(() -> finishedLabel.setText("✅Algorytm MergeSort zakończył działanie."));
         }).start();
     }
 
