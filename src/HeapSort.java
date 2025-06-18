@@ -12,12 +12,13 @@ public class HeapSort extends SortingAlgorithm {
     public void startSorting() {
         new Thread(() -> {
 
-            for (int i = listSize / 2 - 1; i >= 0; i--) {
+            for (int i = listSize / 2 - 1; i >= 0; i--) { incrementCounterIf();
                 heapify(listSize, i);
                 sleep();
             }
+            incrementCounterIf();
 
-            for (int i = listSize - 1; i > 0; i--) {
+            for (int i = listSize - 1; i > 0; i--) { incrementCounterIf();
                 sleep();
                 highlightClear();
                 swap(0, i);
@@ -25,6 +26,8 @@ public class HeapSort extends SortingAlgorithm {
                 sleep();
                 heapify(i, 0);
             }
+            incrementCounterIf();
+
             highlightSorted(0);
             highlightClear();
             Platform.runLater(() -> finishedLabel.setText("✅Algorytm HeapSort zakończył działanie."));
@@ -37,29 +40,28 @@ public class HeapSort extends SortingAlgorithm {
         int right = 2 * rootIndex + 2;
 
         highlightCursor(rootIndex);
+        incrementCounterIf();
         if (left < heapSize) {
-            incrementCounterIf();
             highlightCompareLeft(left);
-            if (list.get(left) > list.get(largest)) {
+            incrementCounterGet(); incrementCounterGet();
+            if (list.get(left) > list.get(largest)) { incrementCounterIf();
                 largest = left;
-                incrementCounterIf();
-                incrementCounterGet(); incrementCounterGet();
-
             }
         }
 
+        incrementCounterIf();
         if (right < heapSize) {
             highlightCompareRigth(right);
             incrementCounterIf();
+            incrementCounterGet(); incrementCounterGet();
             if (list.get(right) > list.get(largest)) {
                 largest = right;
-                incrementCounterIf();
-                incrementCounterGet(); incrementCounterGet();
             }
+
         }
 
+        incrementCounterIf();
         if (largest != rootIndex) {
-            incrementCounterIf();
             sleep();
             swap(rootIndex, largest);
             sleep();

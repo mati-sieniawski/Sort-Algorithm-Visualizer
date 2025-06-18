@@ -13,12 +13,10 @@ public class SortingAlgorithm {
     protected final BarChartVisualizer visualizer;
     protected final Label finishedLabel;
     protected Label speedLabel;
-    //protected Thread sortingThread;  
-    //protected volatile boolean isSorting = true;  
     protected int counterIf = 0;   
     protected int counterGet = 0;
 
-    protected final double[] speedSteps = {0.01, 0.05, 0.1, 0.5, 1, 2, 4, 10};
+    protected final double[] speedSteps = {0.01, 0.05, 0.1, 0.5, 1, 2, 4, 10, 20, 50, 100, 250};
     protected int currentSpeedIndex = 2;
     public double speedMultiplier = speedSteps[currentSpeedIndex];
 

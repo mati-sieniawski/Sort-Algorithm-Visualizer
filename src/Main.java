@@ -175,7 +175,7 @@ new Thread(() -> {
 
         switch (algorithm) {
             case "ShellSort" -> {
-                ShellSort sort = new ShellSort(values, 5, stepLabel, visualizer, finishLabel);
+                ShellSort sort = new ShellSort(values, 500, stepLabel, visualizer, finishLabel);
                 sort.setSpeedLabel(speedLabel);
                 Platform.runLater(() -> {
                     slowerButton.setOnAction(e -> sort.decreaseSpeed());
@@ -184,7 +184,7 @@ new Thread(() -> {
                 sort.startSorting();
             }
             case "HeapSort" -> {
-                HeapSort sort = new HeapSort(values, 5, stepLabel, visualizer, finishLabel);
+                HeapSort sort = new HeapSort(values, 500, stepLabel, visualizer, finishLabel);
                 sort.setSpeedLabel(speedLabel);
                 Platform.runLater(() -> {
                     slowerButton.setOnAction(e -> sort.decreaseSpeed());
@@ -193,7 +193,7 @@ new Thread(() -> {
                 sort.startSorting();
             }
             case "BubbleSort" -> {
-                BubbleSort sort = new BubbleSort(values, 5, stepLabel, visualizer, finishLabel);
+                BubbleSort sort = new BubbleSort(values, 500, stepLabel, visualizer, finishLabel);
                 sort.setSpeedLabel(speedLabel);
                 Platform.runLater(() -> {
                     slowerButton.setOnAction(e -> sort.decreaseSpeed());
@@ -202,7 +202,7 @@ new Thread(() -> {
                 sort.startSorting();
             }
             case "InsertionSort" -> {
-                InsertionSort sort = new InsertionSort(values, 5, stepLabel, visualizer, finishLabel);
+                InsertionSort sort = new InsertionSort(values, 500, stepLabel, visualizer, finishLabel);
                 sort.setSpeedLabel(speedLabel);
                 Platform.runLater(() -> {
                     slowerButton.setOnAction(e -> sort.decreaseSpeed());
@@ -211,7 +211,7 @@ new Thread(() -> {
                 sort.startSorting();
             }
             case "SelectionSort" -> {
-                SelectionSort sort = new SelectionSort(values, 5, stepLabel, visualizer, finishLabel);
+                SelectionSort sort = new SelectionSort(values, 500, stepLabel, visualizer, finishLabel);
                 sort.setSpeedLabel(speedLabel);
                 Platform.runLater(() -> {
                     slowerButton.setOnAction(e -> sort.decreaseSpeed());
@@ -220,7 +220,7 @@ new Thread(() -> {
                 sort.startSorting();
             }
             case "QuickSortHoare" -> {
-                QuickSortHoare sort = new QuickSortHoare(values, 5, stepLabel, visualizer, finishLabel);
+                QuickSortHoare sort = new QuickSortHoare(values, 500, stepLabel, visualizer, finishLabel);
                 sort.setSpeedLabel(speedLabel);
                 Platform.runLater(() -> {
                     slowerButton.setOnAction(e -> sort.decreaseSpeed());
@@ -229,7 +229,7 @@ new Thread(() -> {
                 sort.startSorting();
             }
             case "QuickSortLomuto" -> {
-                QuickSortLomuto sort = new QuickSortLomuto(values, 5, stepLabel, visualizer, finishLabel);
+                QuickSortLomuto sort = new QuickSortLomuto(values, 500, stepLabel, visualizer, finishLabel);
                 sort.setSpeedLabel(speedLabel);
                 Platform.runLater(() -> {
                     slowerButton.setOnAction(e -> sort.decreaseSpeed());
@@ -238,7 +238,7 @@ new Thread(() -> {
                 sort.startSorting();
             }
             case "MergeSort" -> {
-                MergeSort sort = new MergeSort(values, 5, stepLabel, visualizer, finishLabel);
+                MergeSort sort = new MergeSort(values, 500, stepLabel, visualizer, finishLabel);
                 sort.setSpeedLabel(speedLabel);
                 Platform.runLater(() -> {
                     slowerButton.setOnAction(e -> sort.decreaseSpeed());
@@ -247,7 +247,7 @@ new Thread(() -> {
                 sort.startSorting();
             }
             case "BogoSort" -> {
-                BogoSort sort = new BogoSort(values, 50, stepLabel, visualizer, finishLabel);
+                BogoSort sort = new BogoSort(values, 500, stepLabel, visualizer, finishLabel);
                 sort.setSpeedLabel(speedLabel);
                 Platform.runLater(() -> {
                     slowerButton.setOnAction(e -> sort.decreaseSpeed());

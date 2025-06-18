@@ -19,12 +19,16 @@ public class ShellSort extends SortingAlgorithm {
             generateSpacing();
             for (int interval : spacing){
                 for (int startid = 0; startid < interval; startid++){
+                    incrementCounterIf();
                     for (int i = startid; i < listSize; i+=interval){
+                        incrementCounterIf();
                         indexes.add(i);
                     }
+                    incrementCounterIf();
                     simpleInsertionSort(interval);
                     indexes.clear();
                 }
+                incrementCounterIf();
             }
             Platform.runLater(() -> finishedLabel.setText("✅Algorytm ShellSort zakończył działanie."));
         }).start();
@@ -44,22 +48,24 @@ public class ShellSort extends SortingAlgorithm {
 
     private void simpleInsertionSort(int check) {
         for (int i = 1; i < indexes.size(); i++){
-            highlightCursor(indexes.get(i));
-            incrementCounterGet();
             incrementCounterIf();
+            highlightCursor(indexes.get(i));
             if (check == 1) { highlightSorted(0);}
             int j = i - 1;
             highlightCompare(indexes.get(j), -1);
-            int tempValue = list.get(indexes.get(i));
+            int tempValue = list.get(indexes.get(i)); incrementCounterGet();
             while (j >= 0 && list.get(indexes.get(j)) > tempValue){
+                incrementCounterGet();
+                incrementCounterIf(); incrementCounterIf();
                 sleep();
                 highlightCompare(indexes.get(j), indexes.get(j + 1));
                 sleep();
                 set(indexes.get(j + 1), list.get(indexes.get(j)));
-                j--;
                 incrementCounterGet();
-                incrementCounterIf();
+                j--;
             }
+            if (j >= 0) { incrementCounterIf(); incrementCounterGet();}
+            incrementCounterIf();
             sleep();
             set(indexes.get(j + 1), tempValue);
             sleep();

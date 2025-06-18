@@ -12,14 +12,14 @@ public class QuickSortLomuto extends SortingAlgorithm {
     public void startSorting() {
         new Thread(() -> {
             qsort(0, listSize-1);
-             Platform.runLater(() -> finishedLabel.setText("✅Algorytm GuickSortLomuto zakończył działanie."));
+             Platform.runLater(() -> finishedLabel.setText("✅Algorytm QuickSortLomuto zakończył działanie."));
         }).start();
     }
 
     public void qsort(int left, int right) {
-        if (left == right) { highlightSorted(left);incrementCounterIf(); }
+        if (left == right) { highlightSorted(left); }
+        incrementCounterIf();
         if (left < right) {
-            incrementCounterIf();
             int p = partitionLomuto(left, right);
             qsort(left, p - 1);
             qsort(p + 1, right);
@@ -27,24 +27,25 @@ public class QuickSortLomuto extends SortingAlgorithm {
     }
 
     protected int partitionLomuto(int left, int right) {
-        int pivotValue = list.get(right);
+        int pivotValue = list.get(right); incrementCounterGet();
         int i = left - 1;
-        incrementCounterGet();
         highlightCursor(right);
 
         for (int j = left; j < right; j++) {
+            incrementCounterIf();
             sleep();
             highlightCompare(i, j);
+
             incrementCounterIf();
+            incrementCounterGet();
             if (list.get(j) <= pivotValue) {
                 sleep();
                 i++;
                 highlightCompare(i, j);
                 swap(i, j);
-                incrementCounterIf();
-                incrementCounterGet();
             }
         }
+        incrementCounterIf();
         sleep();
         swap(i + 1, right);
         highlightClear();

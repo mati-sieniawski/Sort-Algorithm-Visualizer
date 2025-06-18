@@ -11,22 +11,24 @@ public class BubbleSort extends SortingAlgorithm {
 
     public void startSorting() {
         new Thread(() -> {
-            for (int i = 0; i < listSize; i++) {
-                for (int j = 0; j < listSize - i - 1; j++) {
+            for (int i = 0; i < listSize; i++) { incrementCounterIf();
+                for (int j = 0; j < listSize - i - 1; j++) { incrementCounterIf();
                     highlightCompare(j, -1);
                     highlightCursor(j+1);
+                    incrementCounterIf();
+                    incrementCounterGet();incrementCounterGet();
                     if (list.get(j) > list.get(j + 1)) {
-                        incrementCounterIf();
-                        incrementCounterGet();incrementCounterGet();
                         sleep();
                         swap(j, j + 1);
                     }
                     sleep();
                     highlightClear();
                 }
+                incrementCounterIf();
                 highlightSorted(listSize - i - 1);
             }
-             Platform.runLater(() -> finishedLabel.setText("✅Algorytm BubbleSort zakończył działanie."));
+            incrementCounterIf();
+            Platform.runLater(() -> finishedLabel.setText("✅Algorytm BubbleSort zakończył działanie."));
         }).start();
     }
 
